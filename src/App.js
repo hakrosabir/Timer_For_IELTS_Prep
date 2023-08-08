@@ -1,73 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useTimer } from "react-timer-hook";
 import "./App.css";
 
 function App() {
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [running, setRunning] = useState(false);
+  const [expiryTimestamp, setExpiryTimestamp] = useState(
+    () => new Date().getTime() + 3600000 // 1 hour in milliseconds
+  );
 
-  useEffect(() => {
-    let intervalId;
+  const { seconds, minutes, hours, start, pause, resume, restart } = useTimer({
+    expiryTimestamp,
+    autoStart: false,
+  });
 
-    if (running) {
-      intervalId = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds(seconds - 1);
-        } else {
-          if (minutes > 0) {
-            setMinutes(minutes - 1);
-            setSeconds(59);
-          } else {
-            if (hours > 0) {
-              setHours(hours - 1);
-              setMinutes(59);
-              setSeconds(59);
-            } else {
-              clearInterval(intervalId);
-              setRunning(false);
-            }
-          }
-        }
-      }, 1000);
-    } else {
-      clearInterval(intervalId);
-    }
-
-    return () => clearInterval(intervalId);
-  }, [running, hours, minutes, seconds]);
-
-  const startTimer = () => {
-    if (hours > 0 || minutes > 0 || seconds > 0) {
-      setRunning(true);
-    }
-  };
-
-  const stopTimer = () => {
-    setRunning(false);
-  };
-
-  const resetTimer = () => {
-    setRunning(false);
-    setHours(0);
-    setMinutes(0);
-    setSeconds(0);
+  const handleRestart = () => {
+    const newExpiryTimestamp = new Date().getTime() + 3600000; // 1 hour in milliseconds
+    setExpiryTimestamp(newExpiryTimestamp);
+    restart(newExpiryTimestamp);
   };
 
   return (
     <div className="App">
-      <div className="timer">
+      <div className="timer-container">
+        <h1>Timer for IELTS Practice</h1> {/* Update the heading here */}
         <div className="countdown">
-          <h1>{`${hours
-            .toString()
-            .padStart(2, "0")}:${minutes
-            .toString()
-            .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`}</h1>
+          <h2>
+            <span className="hours">{hours.toString().padStart(2, "0")}</span>:
+            <span className="minutes">
+              {minutes.toString().padStart(2, "0")}
+            </span>
+            :
+            <span className="seconds">
+              {seconds.toString().padStart(2, "0")}
+            </span>
+          </h2>
         </div>
         <div className="buttons">
-          <button onClick={startTimer}>Start</button>
-          <button onClick={stopTimer}>Stop</button>
-          <button onClick={resetTimer}>Reset</button>
+          <button onClick={start}>Start</button>
+          <button onClick={pause}>Pause</button>
+          <button onClick={resume}>Resume</button>
+          <button onClick={handleRestart}>Restart</button>
         </div>
       </div>
     </div>

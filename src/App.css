@@ -1,39 +1,71 @@
-.App {
+body {
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b6b, #bb91ff, #72deff);
+  overflow: hidden;
 }
 
-.timer {
-  text-align: center;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.timer-container {
+  display: flex; /* Change to flex to make it horizontal */
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  width: 90%; /* Increase the width to make it more horizontal */
+  max-width: 500px; /* Set a maximum width for the container */
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #dc0000; /* Set the heading color to #DC0000 */
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
 .countdown {
-  font-size: 3em;
+  font-size: 4.5rem;
   margin: 20px;
+}
+
+.hours {
+  color: #ff6b6b; /* Set color for hours */
+}
+
+.minutes {
+  color: #bb91ff; /* Set color for minutes */
+}
+
+.seconds {
+  color: #72deff; /* Set color for seconds */
 }
 
 .buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: space-between; /* Add space between buttons */
+  margin-top: 30px; /* Increase the margin between container and buttons */
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 14px 28px; /* Increase padding for more space */
+  font-size: 1.2em;
   border: none;
   background-color: #007bff;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 10px; /* Add margin between buttons */
+}
+
+button:last-child {
+  margin-right: 0; /* Remove margin for the last button */
 }
 
 button:hover {
