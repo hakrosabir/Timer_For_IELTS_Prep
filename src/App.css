@@ -14,24 +14,24 @@ body {
   justify-content: center; /* Center content vertically */
   align-items: center;
   background-color: white;
-  padding: 30px;
+  padding: 20px; /* Reduce padding for smaller screens */
   border-radius: 15px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   width: 90%; /* Increase the width to make it more horizontal */
   max-width: 500px; /* Set a maximum width for the container */
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px; /* Reduce margin for smaller screens */
 }
 
 h1 {
   color: #dc0000; /* Set the heading color to #DC0000 */
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 2rem; /* Adjust font size for smaller screens */
+  margin-bottom: 15px; /* Reduce margin for smaller screens */
 }
 
 .countdown {
-  font-size: 4.5rem;
-  margin: 20px;
+  font-size: 3rem; /* Adjust font size for smaller screens */
+  margin: 15px; /* Reduce margin for smaller screens */
 }
 
 .hours {
@@ -48,24 +48,22 @@ h1 {
 
 .buttons {
   display: flex;
-  justify-content: space-between; /* Add space between buttons */
-  margin-top: 30px; /* Increase the margin between container and buttons */
+  flex-direction: column; /* Stack buttons vertically on smaller screens */
+  align-items: center; /* Center buttons horizontally */
+  margin-top: 20px; /* Adjust margin for smaller screens */
 }
 
 button {
-  padding: 14px 28px; /* Increase padding for more space */
-  font-size: 1.2em;
+  width: 100%; /* Set the width to 100% for equal button width */
+  padding: 12px 24px; /* Adjust padding for smaller screens */
+  font-size: 1em;
   border: none;
   background-color: #007bff;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 10px; /* Add margin between buttons */
-}
-
-button:last-child {
-  margin-right: 0; /* Remove margin for the last button */
+  margin: 5px 0; /* Add space between buttons */
 }
 
 button:hover {
